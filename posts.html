@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tonotopy Mapping with MEG: Stimulus Design Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .content {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        code {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 2px 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        #toc {
+            background-color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+        }
+        #toc ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        #toc a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        #toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tonotopy Mapping with MEG: Stimulus Design Guide</h1>
+    </header>
+
+    <div class="content">
+        <nav id="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">1. Introduction</a></li>
+                <li><a href="#stimulus-types">2. Types of Stimuli for Tonotopy Mapping</a></li>
+                <li><a href="#key-components">3. Key Components of Effective Stimuli</a></li>
+                <li><a href="#advanced-considerations">4. Advanced Considerations in Stimulus Design</a></li>
+                <li><a href="#meg-recording">5. Stimulus Presentation and MEG Recording</a></li>
+                <li><a href="#analysis-techniques">6. Analysis Techniques</a></li>
+                <li><a href="#implementation">7. Practical Implementation</a></li>
+                <li><a href="#best-practices">8. Best Practices and Tips</a></li>
+                <li><a href="#glossary">9. Glossary of Technical Terms</a></li>
+                <li><a href="#conclusion">10. Conclusion and Future Directions</a></li>
+            </ul>
+        </nav>
+
+        <section id="introduction" class="section">
+            <h2>1. Introduction</h2>
+            <p>Tonotopy refers to the spatial organization of sound frequency processing in the auditory system. Magnetoencephalography (MEG) is a non-invasive neuroimaging technique that measures magnetic fields produced by electrical currents in the brain. Tonotopy mapping with MEG is crucial for understanding the functional organization of the auditory cortex and its role in hearing and language processing.</p>
+        </section>
+
+        <section id="stimulus-types" class="section">
+            <h2>2. Types of Stimuli for Tonotopy Mapping</h2>
+            <h3>a. Broadband Stimuli</h3>
+            <p>Broadband stimuli contain a wide range of frequencies. They are effective at activating large portions of the auditory cortex simultaneously but may be less precise in mapping specific frequency responses.</p>
+            
+            <h3>b. Narrowband Stimuli</h3>
+            <p>Narrowband stimuli contain a narrow range of frequencies, often centered around a specific frequency. They offer more precise mapping of specific frequency responses but may require longer acquisition times to map the entire frequency range.</p>
+            
+            <h3>c. Frequency Sweeps</h3>
+            <p>Frequency sweeps involve a continuous change in frequency over time. They can efficiently cover a wide frequency range and are useful for analyzing temporal aspects of responses. However, they may introduce confounds due to the rate of frequency change.</p>
+            
+            <h3>d. Interleaved Intervals of Pure Tones (IIPT)</h3>
+            <p>IIPT involves a rapidly presented sequence of pure tones at different frequencies. This approach can achieve high spectral and temporal resolution but requires complex stimulus design and may lead to adaptation effects.</p>
+        </section>
+
+        <!-- Add more sections here -->
+
+        <section id="glossary" class="section">
+            <h2>9. Glossary of Technical Terms</h2>
+            <dl>
+                <dt>Tonotopy</dt>
+                <dd>The spatial organization of sound frequency processing in the auditory system.</dd>
+                
+                <dt>MEG (Magnetoencephalography)</dt>
+                <dd>A non-invasive neuroimaging technique that measures magnetic fields produced by electrical currents in the brain.</dd>
+                
+                <dt>ELC (Equal-Loudness Contours)</dt>
+                <dd>Curves that represent the perceived loudness of pure tones across different frequencies.</dd>
+                
+                <!-- Add more terms as needed -->
+            </dl>
+        </section>
+
+        <section id="conclusion" class="section">
+            <h2>10. Conclusion and Future Directions</h2>
+            <p>The field of tonotopy mapping with MEG continues to evolve, with ongoing research into optimal stimulus design and analysis techniques. As our understanding of auditory processing grows, we can expect further refinements in methodology and potentially new applications in both research and clinical settings.</p>
+        </section>
+    </div>
+
+    <script>
+        // Add smooth scrolling for table of contents links
+        document.querySelectorAll('#toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
