@@ -1,32 +1,52 @@
-const posts = [
-    {
-        title: "My First Research Finding",
-        date: "2024-09-15",
-        content: "# My First Research Finding\n\nToday, I made a breakthrough in [specific area]. This finding suggests that...\n\n## Methods\n\nWe used the following methods:\n\n1. Method A\n2. Method B\n3. Method C\n\n## Results\n\nOur results show a significant improvement in...\n\n## Conclusion\n\nThis research opens up new possibilities for..."
-    },
-    {
-        title: "Literature Review: Current State of [Research Area]",
-        date: "2024-09-10",
-        content: "# Literature Review: Current State of [Research Area]\n\nIn this post, I summarize the current state of research in [specific area].\n\n## Key Papers\n\n1. Smith et al. (2023)\n2. Johnson and Lee (2024)\n3. ..."
-    }
-];
+// Array to store the metadata of all posts
+let posts = [];
 
-function createPostElement(post) {
-    const postElement = document.createElement('div');
+// Function to fetch the list of posts
+async function fetchPostList() {
+    try {
+        const response = await fetch('posts/index.json');
+        posts = await response.json();
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date, newest first
+    } catch (error) {
+        console.error('Error fetching post list:', error);
+    }
+}
+
+// Function to fetch and render a single post
+async function fetchAndRenderPost(filename) {
+    try {
+        const response = await fetch(`posts/${filename}`);
+        const content = await response.text();
+        return marked(content);
+    } catch (error) {
+        console.error(`Error fetching post ${filename}:`, error);
+        return '<p>Error loading post.</p>';
+    }
+}
+
+// Function to create a post element
+function createPostElement(post, content) {
+    const postElement = document.createElement('article');
     postElement.className = 'post';
     postElement.innerHTML = `
-        <h3>${post.title}</h3>
+        <h2>${post.title}</h2>
         <p class="post-meta">Published on ${post.date}</p>
-        <div class="post-content">${marked(post.content)}</div>
+        <div class="post-content">${content}</div>
     `;
     return postElement;
 }
 
-function loadPosts() {
+// Function to load and display posts
+async function loadPosts() {
+    await fetchPostList();
     const postList = document.getElementById('post-list');
-    posts.forEach(post => {
-        postList.appendChild(createPostElement(post));
-    });
+    
+    for (const post of posts) {
+        const content = await fetchAndRenderPost(post.filename);
+        const postElement = createPostElement(post, content);
+        postList.appendChild(postElement);
+    }
 }
 
+// Load posts when the DOM is ready
 document.addEventListener('DOMContentLoaded', loadPosts);
