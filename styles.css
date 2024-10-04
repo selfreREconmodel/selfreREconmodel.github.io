@@ -1,112 +1,108 @@
 :root {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --accent-color: #bb86fc;
-    --secondary-color: #03dac6;
-    --header-bg: #1e1e1e;
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #ecf0f1;
+    --text-color: #34495e;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
 }
 
-.container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 header {
-    background-color: var(--header-bg);
-    padding: 20px 0;
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2em;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
-    display: flex;
 }
 
 nav ul li {
-    margin-left: 20px;
+    display: inline;
+    margin-right: 20px;
 }
 
 nav ul li a {
-    color: var(--accent-color);
+    color: white;
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-weight: bold;
 }
 
-nav ul li a:hover {
-    color: var(--secondary-color);
+nav ul li a.active {
+    border-bottom: 2px solid white;
 }
 
 main {
-    padding: 40px 0;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
-h2 {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--secondary-color);
-    padding-bottom: 10px;
+.post-item {
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.post {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--header-bg);
+.post-item h2 {
+    margin-top: 0;
+    color: var(--primary-color);
 }
 
-.post:last-child {
-    border-bottom: none;
+.post-item p {
+    margin-bottom: 0;
 }
 
-.post h3 {
-    color: var(--secondary-color);
+#back-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
-.post-meta {
-    font-size: 0.9em;
-    color: #777;
+#post {
+    background-color: white;
+    border-radius: 5px;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 footer {
-    background-color: var(--header-bg);
-    color: #777;
     text-align: center;
-    padding: 20px 0;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    color: white;
 }
 
-@media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
-    }
-
-    nav ul {
-        margin-top: 20px;
+@media (max-width: 600px) {
+    header {
+        padding: 0.5rem;
     }
 
     nav ul li {
-        margin: 0 10px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    main {
+        padding: 0 0.5rem;
     }
 }
