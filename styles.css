@@ -1,39 +1,47 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #bb86fc;
+    --secondary-color: #03dac6;
+    --header-bg: #1e1e1e;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
-    color: #e0e0e0;
-    background-color: #1a1a1a;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 1000px; /* Already defined */
+    width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    text-align: center; /* Added this to ensure text is centrally aligned */
+    padding: 0 20px;
 }
-
 
 header {
-    background-color: #2c2c2c;
+    background-color: var(--header-bg);
     padding: 20px 0;
-    margin-bottom: 30px;
 }
 
- 
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 header h1 {
     margin: 0;
-    color: #ffffff;
     font-size: 2em;
 }
 
 nav ul {
-    padding: 0;
     list-style-type: none;
+    padding: 0;
     display: flex;
-    margin: 0;
 }
 
 nav ul li {
@@ -41,33 +49,29 @@ nav ul li {
 }
 
 nav ul li a {
+    color: var(--accent-color);
     text-decoration: none;
-    color: #bb86fc;
-    font-weight: bold;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #3700b3;
+    color: var(--secondary-color);
 }
 
 main {
-    background-color: #2c2c2c;
-    padding: 30px;
-    border-radius: 8px;
+    padding: 40px 0;
 }
 
 h2 {
-    color: #bb86fc;
-    border-bottom: 2px solid #3700b3;
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--secondary-color);
     padding-bottom: 10px;
-    margin-top: 0;
 }
 
 .post {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--header-bg);
 }
 
 .post:last-child {
@@ -75,41 +79,33 @@ h2 {
 }
 
 .post h3 {
-    font-size: 1.5em; /* Adjust size as needed */
-    color: #03dac6;
+    color: var(--secondary-color);
 }
-
 
 .post-meta {
     font-size: 0.9em;
-    color: #b0bec5;
-    margin-bottom: 15px;
-}
-
-.post-content {
-    line-height: 1.8;
+    color: #777;
 }
 
 footer {
+    background-color: var(--header-bg);
+    color: #777;
     text-align: center;
     padding: 20px 0;
-    margin-top: 40px;
-    color: #b0bec5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-    
     header .container {
         flex-direction: column;
     }
-    
+
     nav ul {
         margin-top: 20px;
     }
-    
+
     nav ul li {
         margin: 0 10px;
     }
