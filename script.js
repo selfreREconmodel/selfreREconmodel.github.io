@@ -23,12 +23,17 @@ function displayPosts() {
         postItem.className = 'post-item';
         postItem.innerHTML = `
             <h2>${post.title}</h2>
-            <p>${new Date(post.date).toLocaleDateString()}</p>
-            <p>${post.excerpt}</p>
+            <p>${formatDate(post.date)}</p>
+            <p>${post.excerpt || 'No excerpt available.'}</p>
         `;
         postItem.addEventListener('click', () => loadPost(post.filename));
         postList.appendChild(postItem);
     });
+}
+
+function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
 }
 
 async function loadPost(filename) {
@@ -56,8 +61,8 @@ document.getElementById('about-link').addEventListener('click', (e) => {
     e.preventDefault();
     document.getElementById('post').innerHTML = `
         <h2>About This Blog</h2>
-        <p>Welcome to my GitHub Pages blog! This is a simple blog that reads Markdown files from a local folder.</p>
-        <p>Feel free to explore the posts and learn more about various topics.</p>
+        <p>Welcome to my GitHub Pages blog! This blog showcases my research findings and literature reviews in the field of Quantum Machine Learning.</p>
+        <p>Feel free to explore the posts and learn more about the cutting-edge developments in this exciting field.</p>
     `;
     document.getElementById('post-list').style.display = 'none';
     document.getElementById('post-content').style.display = 'block';
