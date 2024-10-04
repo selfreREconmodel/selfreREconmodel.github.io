@@ -1,18 +1,15 @@
-// Array to store the metadata of all posts
 let posts = [];
 
-// Function to fetch the list of posts
 async function fetchPostList() {
     try {
         const response = await fetch('posts/index.json');
         posts = await response.json();
-        posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date, newest first
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
     } catch (error) {
         console.error('Error fetching post list:', error);
     }
 }
 
-// Function to fetch and render a single post
 async function fetchAndRenderPost(filename) {
     try {
         const response = await fetch(`posts/${filename}`);
@@ -24,19 +21,17 @@ async function fetchAndRenderPost(filename) {
     }
 }
 
-// Function to create a post element
 function createPostElement(post, content) {
     const postElement = document.createElement('article');
     postElement.className = 'post';
     postElement.innerHTML = `
-        <h2>${post.title}</h2>
+        <h3>${post.title}</h3>
         <p class="post-meta">Published on ${post.date}</p>
         <div class="post-content">${content}</div>
     `;
     return postElement;
 }
 
-// Function to load and display posts
 async function loadPosts() {
     await fetchPostList();
     const postList = document.getElementById('post-list');
@@ -48,5 +43,4 @@ async function loadPosts() {
     }
 }
 
-// Load posts when the DOM is ready
 document.addEventListener('DOMContentLoaded', loadPosts);
