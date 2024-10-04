@@ -61,9 +61,8 @@ document.getElementById('about-link').addEventListener('click', (e) => {
     e.preventDefault();
     document.getElementById('post').innerHTML = `
         <h2>About This Blog</h2>
-        <p>Welcome to the Zen Research Blog. This space is dedicated to sharing insights and findings in the field of Quantum Machine Learning, presented in a calm, focused manner.</p>
-        <p>Here, we strive for clarity in complexity, finding simplicity in the intricate world of quantum computing and machine learning.</p>
-    `;
+        <p> ;) </p>
+     `;
     document.getElementById('post-list').style.display = 'none';
     document.getElementById('post-content').style.display = 'block';
 });
