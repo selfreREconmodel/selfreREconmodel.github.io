@@ -11,8 +11,8 @@ In studies using Equal Loudness Contours (ELC), researchers either conducted man
 We  will examine nine key papers published between 2003 and 2022 that explore tonotopy in the human auditory cortex. Additional papers may be included as the research progresses.
 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/110ad965-6b60-46ef-894b-d3e09fe7fff7/74fba04f-8910-436b-8ef3-6866fe63505a/image.png)
-Studies on Tonotopy in Human Auditory Cortex: Sound Intensity Approaches
+![Image description](The_Music_Lesson.jpg "The Music Lesson")
+### Studies on Tonotopy in Human Auditory Cortex: Sound Intensity Approaches
 
 1. Formisano et al. (2003): No frequency-specific weighting; Fixed 70dB SPL
 2. Talavage et al. (2004): Manual threshold detection, +35/40 dB above threshold
