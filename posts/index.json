@@ -1,19 +1,20 @@
 [
   {
-    "title": "Tonotopy",
+    "title": "Breakthrough in Quantum Machine Learning",
     "date": "2024-09-16",
     "filename": "tonotopy.md",
-    "excerpt": "My understanding of tonotopy"
-
+    "excerpt": "A summary of our recent breakthrough in quantum machine learning algorithms."
   },
   {
     "title": "My First Research Finding",
     "date": "2024-09-15",
-    "filename": "first-research-finding.md"
+    "filename": "first-research-finding.md",
+    "excerpt": "Detailing the process and results of my first major research project."
   },
   {
     "title": "Literature Review: Current State of Research",
     "date": "2024-09-10",
-    "filename": "literature-review.md"
+    "filename": "literature-review.md",
+    "excerpt": "A comprehensive review of the current state of quantum machine learning research."
   }
 ]
