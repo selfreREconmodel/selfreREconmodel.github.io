@@ -21,13 +21,7 @@ header {
     margin-bottom: 30px;
 }
 
-header .container {
-    display: flex;
-    justify-content: center; /* Centers both title and nav */
-    align-items: center;
-    flex-direction: column; /* Stack the title and nav */
-}
-
+ 
 
 header h1 {
     margin: 0;
