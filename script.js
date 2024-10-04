@@ -8,7 +8,7 @@ let posts = [];
 
 async function fetchPosts() {
     try {
-        const response = await fetch('https://api.github.com/repos/{username}/{repository}/contents/posts');
+        const response = await fetch('https://api.github.com/repos/{selfreREconmodel}/{selfreREconmodel.github.io}/contents/posts');
         const data = await response.json();
         posts = data.filter(file => file.name.endsWith('.md'));
         displayPosts();
