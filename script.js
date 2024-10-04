@@ -1,46 +1,64 @@
+const postList = document.getElementById('post-list');
+const postContent = document.getElementById('post-content');
+const post = document.getElementById('post');
+const backButton = document.getElementById('back-button');
+const aboutLink = document.getElementById('about-link');
+
 let posts = [];
 
-async function fetchPostList() {
+async function fetchPosts() {
     try {
-        const response = await fetch('posts/index.json');
-        posts = await response.json();
-        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        const response = await fetch('https://api.github.com/repos/{username}/{repository}/contents/posts');
+        const data = await response.json();
+        posts = data.filter(file => file.name.endsWith('.md'));
+        displayPosts();
     } catch (error) {
-        console.error('Error fetching post list:', error);
+        console.error('Error fetching posts:', error);
+        postList.innerHTML = '<p>Error loading posts. Please try again later.</p>';
     }
 }
 
-async function fetchAndRenderPost(filename) {
+function displayPosts() {
+    postList.innerHTML = '';
+    posts.forEach(post => {
+        const postItem = document.createElement('div');
+        postItem.className = 'post-item';
+        postItem.innerHTML = `
+            <h2>${post.name.replace('.md', '')}</h2>
+            <p>Click to read more</p>
+        `;
+        postItem.addEventListener('click', () => loadPost(post.download_url));
+        postList.appendChild(postItem);
+    });
+}
+
+async function loadPost(url) {
     try {
-        const response = await fetch(`posts/${filename}`);
-        const content = await response.text();
-        return marked(content);
+        const response = await fetch(url);
+        const markdown = await response.text();
+        post.innerHTML = marked.parse(markdown);
+        postList.style.display = 'none';
+        postContent.style.display = 'block';
     } catch (error) {
-        console.error(`Error fetching post ${filename}:`, error);
-        return '<p>Error loading post.</p>';
+        console.error('Error loading post:', error);
+        post.innerHTML = '<p>Error loading post. Please try again later.</p>';
     }
 }
 
-function createPostElement(post, content) {
-    const postElement = document.createElement('article');
-    postElement.className = 'post';
-    postElement.innerHTML = `
-        <h3>${post.title}</h3>
-        <p class="post-meta">Published on ${post.date}</p>
-        <div class="post-content">${content}</div>
+backButton.addEventListener('click', () => {
+    postContent.style.display = 'none';
+    postList.style.display = 'block';
+});
+
+aboutLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    post.innerHTML = `
+        <h2>About This Blog</h2>
+        <p>Welcome to my GitHub Pages blog! This is a simple blog that reads Markdown files from a GitHub repository.</p>
+        <p>Feel free to explore the posts and learn more about various topics.</p>
     `;
-    return postElement;
-}
+    postList.style.display = 'none';
+    postContent.style.display = 'block';
+});
 
-async function loadPosts() {
-    await fetchPostList();
-    const postList = document.getElementById('post-list');
-    
-    for (const post of posts) {
-        const content = await fetchAndRenderPost(post.filename);
-        const postElement = createPostElement(post, content);
-        postList.appendChild(postElement);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', loadPosts);
+fetchPosts();
