@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Blog</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Zen Research Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>My GitHub Pages Blog</h1>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#" id="about-link">About</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Zen Research Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#" id="about-link">About</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        <section id="post-list">
-            <!-- Posts will be dynamically inserted here -->
-        </section>
+        <main>
+            <section id="post-list">
+                <!-- Posts will be dynamically inserted here -->
+            </section>
 
-        <section id="post-content" style="display: none;">
-            <button id="back-button"><i class="fas fa-arrow-left"></i> Back to Posts</button>
-            <article id="post"></article>
-        </section>
-    </main>
+            <section id="post-content" style="display: none;">
+                <button id="back-button">← Back to Posts</button>
+                <article id="post"></article>
+            </section>
+        </main>
 
-    <footer>
-        <p>&copy; 2024 My GitHub Pages Blog. All rights reserved.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2024 Zen Research Blog. All rights reserved.</p>
+        </footer>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
     <script src="script.js"></script>
