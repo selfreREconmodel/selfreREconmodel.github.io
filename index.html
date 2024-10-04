@@ -3,42 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Research Blog</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>My GitHub Pages Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Your Research Blog</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#posts">Posts</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>My GitHub Pages Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#" id="about-link">About</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="container">
-        <section id="home">
-            <h2>Welcome to My Research Blog</h2>
-            <p>Here, I share my latest insights and thoughts on [Your Research Area].</p>
+    <main>
+        <section id="post-list">
+            <!-- Posts will be dynamically inserted here -->
         </section>
-        <section id="posts">
-            <h2>Recent Posts</h2>
-            <div id="post-list"></div>
+
+        <section id="post-content" style="display: none;">
+            <button id="back-button"><i class="fas fa-arrow-left"></i> Back to Posts</button>
+            <article id="post"></article>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 My GitHub Pages Blog. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.3/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
