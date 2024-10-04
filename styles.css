@@ -79,9 +79,10 @@ h2 {
 }
 
 .post h3 {
-    margin-bottom: 10px;
+    font-size: 1.5em; /* Adjust size as needed */
     color: #03dac6;
 }
+
 
 .post-meta {
     font-size: 0.9em;
