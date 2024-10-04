@@ -29,12 +29,14 @@ header h1 {
     margin: 0 0 20px 0;
     color: #ffffff;
     font-size: 2.5em;
+    position: static; /* Ensure no positioning is applied */
 }
 
 nav ul {
     padding: 0;
     list-style-type: none;
     display: flex;
+    margin: 0; /* Reset margin */
 }
 
 nav ul li {
