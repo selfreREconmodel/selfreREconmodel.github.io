@@ -1,64 +1,66 @@
-const postList = document.getElementById('post-list');
-const postContent = document.getElementById('post-content');
-const post = document.getElementById('post');
-const backButton = document.getElementById('back-button');
-const aboutLink = document.getElementById('about-link');
-
 let posts = [];
 
-async function fetchPosts() {
+async function fetchPostList() {
     try {
-        const response = await fetch('https://api.github.com/repos/{selfreREconmodel}/{selfreREconmodel.github.io}/contents/posts');
-        const data = await response.json();
-        posts = data.filter(file => file.name.endsWith('.md'));
+        const response = await fetch('posts/index.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        posts = await response.json();
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
         displayPosts();
     } catch (error) {
-        console.error('Error fetching posts:', error);
-        postList.innerHTML = '<p>Error loading posts. Please try again later.</p>';
+        console.error('Error fetching post list:', error);
+        document.getElementById('post-list').innerHTML = `<p>Error loading posts: ${error.message}. Please check your setup and try again.</p>`;
     }
 }
 
 function displayPosts() {
+    const postList = document.getElementById('post-list');
     postList.innerHTML = '';
     posts.forEach(post => {
         const postItem = document.createElement('div');
         postItem.className = 'post-item';
         postItem.innerHTML = `
-            <h2>${post.name.replace('.md', '')}</h2>
-            <p>Click to read more</p>
+            <h2>${post.title}</h2>
+            <p>${new Date(post.date).toLocaleDateString()}</p>
+            <p>${post.excerpt}</p>
         `;
-        postItem.addEventListener('click', () => loadPost(post.download_url));
+        postItem.addEventListener('click', () => loadPost(post.filename));
         postList.appendChild(postItem);
     });
 }
 
-async function loadPost(url) {
+async function loadPost(filename) {
     try {
-        const response = await fetch(url);
+        const response = await fetch(`posts/${filename}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const markdown = await response.text();
-        post.innerHTML = marked.parse(markdown);
-        postList.style.display = 'none';
-        postContent.style.display = 'block';
+        document.getElementById('post').innerHTML = marked.parse(markdown);
+        document.getElementById('post-list').style.display = 'none';
+        document.getElementById('post-content').style.display = 'block';
     } catch (error) {
         console.error('Error loading post:', error);
-        post.innerHTML = '<p>Error loading post. Please try again later.</p>';
+        document.getElementById('post').innerHTML = `<p>Error loading post: ${error.message}. Please try again later.</p>`;
     }
 }
 
-backButton.addEventListener('click', () => {
-    postContent.style.display = 'none';
-    postList.style.display = 'block';
+document.getElementById('back-button').addEventListener('click', () => {
+    document.getElementById('post-content').style.display = 'none';
+    document.getElementById('post-list').style.display = 'block';
 });
 
-aboutLink.addEventListener('click', (e) => {
+document.getElementById('about-link').addEventListener('click', (e) => {
     e.preventDefault();
-    post.innerHTML = `
+    document.getElementById('post').innerHTML = `
         <h2>About This Blog</h2>
-        <p>Welcome to my GitHub Pages blog! This is a simple blog that reads Markdown files from a GitHub repository.</p>
+        <p>Welcome to my GitHub Pages blog! This is a simple blog that reads Markdown files from a local folder.</p>
         <p>Feel free to explore the posts and learn more about various topics.</p>
     `;
-    postList.style.display = 'none';
-    postContent.style.display = 'block';
+    document.getElementById('post-list').style.display = 'none';
+    document.getElementById('post-content').style.display = 'block';
 });
 
-fetchPosts();
+fetchPostList();
