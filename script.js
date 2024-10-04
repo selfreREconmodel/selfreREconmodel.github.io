@@ -23,8 +23,8 @@ function displayPosts() {
         postItem.className = 'post-item';
         postItem.innerHTML = `
             <h2>${post.title}</h2>
-            <p>${formatDate(post.date)}</p>
-            <p>${post.excerpt || 'No excerpt available.'}</p>
+            <p class="date">${formatDate(post.date)}</p>
+            <p class="excerpt">${post.excerpt || 'No excerpt available.'}</p>
         `;
         postItem.addEventListener('click', () => loadPost(post.filename));
         postList.appendChild(postItem);
@@ -61,8 +61,8 @@ document.getElementById('about-link').addEventListener('click', (e) => {
     e.preventDefault();
     document.getElementById('post').innerHTML = `
         <h2>About This Blog</h2>
-        <p>Welcome to my GitHub Pages blog! This blog showcases my research findings and literature reviews in the field of Quantum Machine Learning.</p>
-        <p>Feel free to explore the posts and learn more about the cutting-edge developments in this exciting field.</p>
+        <p>Welcome to the Zen Research Blog. This space is dedicated to sharing insights and findings in the field of Quantum Machine Learning, presented in a calm, focused manner.</p>
+        <p>Here, we strive for clarity in complexity, finding simplicity in the intricate world of quantum computing and machine learning.</p>
     `;
     document.getElementById('post-list').style.display = 'none';
     document.getElementById('post-content').style.display = 'block';
